@@ -1,0 +1,95 @@
+<style>
+    .center {
+
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        object-position: center;
+        text-align: center;
+    }
+</style>
+<div class="container col-sm-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-sm-12 text-center">
+                <h3 class="title-pagina">Gerar Código de Ativação de Usuário</h3>
+            </div>
+            <div class="col-sm-12 form-group">
+                <form name="formGerarCodigo">
+                    <div class="col-sm-12">
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-4">
+                                <i class="icone_obrigatorio">*</i><label for="descricao_usuario_config_ativacao"> Descrição do Código</label><i
+                                    class="icone_formulario_correto" ng-show="vm.pagina_gerar_codigo.descricao_usuario_config_ativacao" class="fa fa-check"
+                                    aria-hidden="true">✔</i>
+                                <textarea type="text" class="form-control round-form" id="descricao_usuario_config_ativacao"
+                                    name="descricao_usuario_config_ativacao" required ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"
+                                    ng-model="vm.pagina_gerar_codigo.descricao_usuario_config_ativacao"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-2">
+
+                                <label for="cod_permissao_user">Permissão:</label><i class="icone_formulario_correto"
+                                    ng-show="vm.pagina_gerar_codigo.cod_permissao_user"
+                                    aria-hidden="true">✔</i>
+                                <select id="cod_permissao_user" class="form-control round-form"
+                                    ng-model="vm.pagina_gerar_codigo.cod_permissao_user" name="cod_permissao_user"
+                                    required>
+                                    <option value="">Selecione uma Permissão</option>
+                                    <option ng-repeat="und in permissoes_user_request"
+                                        value="{{und.cod_permissao_user}}"
+                                        ng-selected="vm.pagina_gerar_codigo.cod_permissao_user==und.cod_permissao_user.toString()">
+                                        {{und.atributos_permissao_user}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control round-form" id="codigo_gerado" name="codigo_gerado"
+                                required ng-pattern="/^[A-Z0-9\-]{3,}$/"
+                                ng-model="vm.pagina_gerar_codigo.codigo_gerado">
+
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-success round-form"
+                                ng-click="vm.gerar_cod_ativacao_usuario(vm.pagina_gerar_codigo.cod_permissao_user)">Gerar
+                                Código</button>
+                            <button type="button" class="btn btn-success round-form"
+                                ng-disabled="formGerarCodigo.$invalid"
+                                ng-click="vm.salvar_codigo(vm.pagina_gerar_codigo)"> Salvar</button>
+                            <button type="button" class="btn btn-success round-form" onclick="copiarCodigo()"
+                                ng-disabled="formGerarCodigo.$invalid">Copiar</button><i id="icone_copiado" class="icone_formulario_correto" aria-hidden="true" hidden="hidden">✔</i>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="app/app.mask.js"></script>
+
+<script>
+    function copiarCodigo() {
+        let element_codigo_gerado = document.getElementById('codigo_gerado').value
+        let element_icone_copiado = document.getElementById('icone_copiado')
+        element_icone_copiado.setAttribute("hidden", "hidden")
+        
+        if (String(element_codigo_gerado).length > 1) {
+            console.log(element_codigo_gerado)
+            navigator.clipboard.writeText(element_codigo_gerado)
+            element_icone_copiado.removeAttribute("hidden")
+
+        
+        }
+    }
+</script>

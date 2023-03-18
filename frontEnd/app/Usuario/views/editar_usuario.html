@@ -1,0 +1,79 @@
+<div class="col-sm-12 text-center">
+    <h3 class="title-pagina">Informações do Usuário</h3>
+</div>
+<div class="form-group">
+    <div class="container col-sm-12">
+        <form name="formTema">
+            <div class="border-red-700">
+                <div class="col-sm-2">
+
+                    <label for="tema">Tema:<i class="icone_formulario_correto" ng-show="vm.usuario.tema"
+                            class="" aria-hidden="true">✔</i></label>
+                    <select id="temaUsuario" class="form-control" ng-model="vm.usuario.tema" name="temaUsuario">
+                        <option value="">Selecione o Tema</option>
+                        <option value="theme-light">Claro</option>
+                        <option value="theme-dark">Escuro</option>
+
+                    </select>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn btn-success round-form" ng-disabled="formTema.$invalid"
+                        ng-click="vm.atualizar_tema(vm.usuario.tema)">Atualizar Tema</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="form-group">
+    <div class="container col-sm-12">
+        <div class="container col-sm-8">
+        <form name="formCadastrarUsuario">
+            <div class="col-sm-3">
+                <label for="nome_usuario">Nome:<i class="icone_formulario_correto" ng-show="vm.usuario.name"
+                        class="" aria-hidden="true">✔</i></label>
+                <input type="text" name="nome_usuario" class="form-control" placeholder="Digite o nome do usuário"
+                    id="nome_usuario" ng-pattern="/^[A-Za-zÀ-ü ]+$/" ng-model="vm.usuario.name" ng-required="true">
+            </div>
+            <!-- <div class="col-sm-6">
+                <label for="email">
+                    E-mail:<i class="icone_formulario_correto" ng-show="vm.usuario.email" class="" aria-hidden="true">✔</i>
+                </label>
+                <input type="email" name="email" class="form-control" placeholder="Digite o E-mail do usuário"
+                    id="email" ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" ng-model="vm.usuario.email"
+                    ng-required="true">
+            </div> -->
+            <div class="col-sm-2">
+                <label for="senha">Senha Antiga:<i class="icone_formulario_correto" ng-show="vm.usuario.old_password"
+                        class="" aria-hidden="true">✔</i></label>
+                <input type="password" name="senha" class="form-control" placeholder="Digite a Senha antiga" id="senha"
+                    ng-pattern="/^(?=.*\d)(?=.*[A-Za-zÀ-ü]).{5,}$/" ng-model="vm.usuario.old_password"
+                    ng-required="true">
+            </div>
+            <div class="col-sm-2">
+                <label for="senha">Nova Senha:<i class="icone_formulario_correto" ng-show="vm.usuario.password"
+                        class="" aria-hidden="true">✔</i></label>
+                <input type="password" name="senha" class="form-control" placeholder="Digite a nova Senha"
+                    id="new_senha" ng-pattern="/^(?=.*\d)(?=.*[A-Za-zÀ-ü]).{5,}$/" ng-model="vm.usuario.password"
+                    ng-required="true">
+            </div>
+            <div class="col-sm-2">
+                <label for="repetir_senha">Repetir Nova Senha:<i class="icone_formulario_correto"
+                        ng-show="vm.usuario.retry_password" ng-if="vm.usuario.password == vm.usuario.retry_password"
+                        class="" aria-hidden="true">✔</i></label>
+                <input type="password" name="repetir_senha" class="form-control" placeholder="Repetir Nova Senha"
+                    id="repetir_senha" ng-model="vm.usuario.retry_password" ng-required="true">
+            </div>
+            <input type="hidden" name="id_usuario" ng-model="vm.usuario.id">
+            <div class="col-sm-12">
+                <div class="text-center">
+                    <button class="btn btn-success round-form" ng-disabled="formCadastrarUsuario.$invalid"
+                        ng-click="vm.atualizar_usuario(vm.usuario)">Atualizar Dados</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+
+<script src="app/app.mask.js"></script>

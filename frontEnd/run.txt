@@ -1,0 +1,5 @@
+#pkill -f nodejs
+#npm install nodemon
+npm start
+#npm install pm2 -g
+pm2 start server.js -i max # pm2 list <app_name|namespace|id|'all'|json_conf>;  pm2 restart; pm2 stop; pm2 reload all

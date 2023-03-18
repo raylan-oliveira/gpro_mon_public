@@ -1,0 +1,41 @@
+<style>
+.clearfix:before, .clearfix:after, .dl-horizontal dd:before, .dl-horizontal dd:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical > .btn-group:before, .btn-group-vertical > .btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+    display: block;
+    content: " ";
+}
+
+</style>
+<header>
+	<div class="title_login">
+		<h1 class="text-center font_login_title_login">{{nomeSistema}}</h1>
+		<h3 class="text-center font_login_title_login">{{descricaoSistema}}</h3>
+	</div>
+</header>
+
+<div id="login-page">
+	<div class="container positionlogin" >
+		<form class="form_login" name="formLogin">
+			<h2 class="form_login_title_font">Login</h2>
+			<div class="login-wrap" >
+				<input type="email"  name="email" class="form-control" placeholder="Email" ng-model="vm.usuario.email" ng-required="true" autofocus>
+				<input type="password" name="senha" class="form-control" ng-model="vm.usuario.password" placeholder="Senha" ng-required="true">
+				<div ng-show="loading">
+					<div class="loader" style="width: 60px; height: 60px; margin-left: 40%;"></div>
+				</div>
+				<div ng-hide="loading" style="margin-left: 2%;">
+					<button class="btn btn-theme" type="submit" ng-click="vm.logar(usuario)" style="height: 102%; width: 102%;" ng-disabled="formLogin.$invalid"><i class="fa fa-lock"></i>
+						Entrar
+					</button>
+				</div>
+				<h4 class="text-center" style="color: red;">
+					{{vm.mensagem}}
+				</h4>
+			</div>	
+			<a href="" lass="btn btn-theme" ng-click="vm.cadastrar_usuario_login()"><p class="cad_user">Cadastrar Usuário</p></a>	
+		</form>
+		      
+	</div>
+</div><br>
+
+<div ng-include="'app/Commons/footer.html'"></div>
+<div ng-include="'app/Login/modals/cadastrar.html'"></div>

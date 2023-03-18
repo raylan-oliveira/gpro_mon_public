@@ -1,0 +1,58 @@
+<div class="modal fade" id="modal_cadastrar_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title corfont text-center" id="myModalLabel">Cadastrar Usuário</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-login" name="formCadastroformLogin">
+                    <div class="login-wrap-cadastro">
+                        <label class="h5">Nome<i class="icone_formulario_correto" ng-show="dados_usuario.nome"
+                                class="" aria-hidden="true">✔</i></label><input type="text" name="nome"
+                            class="form-control" placeholder="Nome" ng-pattern="/^[A-Za-zÀ-ü ]+$/"
+                            ng-model="dados_usuario.nome" ng-required="true">
+                        <label class="h5">Email<i class="icone_formulario_correto" ng-show="dados_usuario.email"
+                                class="" aria-hidden="true">✔</i></label><input type="email" name="email"
+                            class="form-control" placeholder="Email" ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
+                            ng-model="dados_usuario.email" ng-required="true">
+                        <label class="h5">Senha<i class="icone_formulario_correto" ng-show="dados_usuario.password"
+                                class="" aria-hidden="true">✔</i></label><input type="password" name="senha"
+                            class="form-control" ng-pattern="/^(?=.*\d)(?=.*[A-Za-zÀ-ü]).{5,}$/"
+                            ng-model="dados_usuario.password" placeholder="Senha" ng-required="true">
+                        <label class="h5">Mínimo 5 caracteres entre letras e números</label>
+                        <label class="h5">Repetir Senha<i class="icone_formulario_correto"
+                                ng-show="dados_usuario.retry_password"
+                                ng-if="dados_usuario.password == dados_usuario.retry_password" class="" aria-hidden="true">✔</i></label><input type="password" name="repetir_senha"
+                            class="form-control" placeholder="Repetir Senha" id="repetir_senha"
+                            ng-model="dados_usuario.retry_password" ng-required="true">
+                        <div ng-show="loading">
+                            <div class="loader" style="width: 60px; height: 60px; margin-left: 40%;"></div>
+                        </div>
+
+                        <label class="h5">Instituição:</label>
+                        <select id="orgao" class="form-control round-form" ng-model="dados_usuario.cod_orgao"
+                            name="orgaoCadastro">
+                            <option value="">Selecione uma Instituição</option>
+                            <option ng-repeat="und in orgaos" value="{{und.cod_orgao}}"
+                                ng-selected="dados_usuario.cod_orgao==und.cod_orgao.toString()">
+                                {{und.sigla_orgao}}
+                            </option>
+                        </select>
+                        <label class="h5">Código de Ativação<i class="icone_formulario_correto" ng-show="dados_usuario.cod_ativacao"
+                            class="" aria-hidden="true">✔</i></label><input name="cod_ativacao"
+                        class="form-control" ng-model="dados_usuario.cod_ativacao" placeholder="">
+                        <div ng-hide="loading" style="margin-left: 2%;">
+                            <button class="btn btn-success btn-block round-form pull-left" type="submit"
+                                ng-click="vm.cadastrar_usuario(dados_usuario)" style="height: 102%; width: 102%;"
+                                ng-disabled="formCadastroformLogin.$invalid">Cadastrar</button>
+                        </div>
+                </form>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-success round-form pull-right" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

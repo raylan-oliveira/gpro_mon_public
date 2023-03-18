@@ -1,0 +1,119 @@
+<style>
+    .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+</style>
+
+
+<div class="col-sm-12 text-center">
+    <h3 class="title-pagina">Pesquisa de Autuação</h3>
+    <h3 class="" ng-if="!(permissao_user.includes('VISUALIZAR'))">Sem Permissão para VISUALIZAR</h3>
+</div>
+<p class="text-center alert alert-danger" ng-show="datamessage==1">{{message}}</p>
+<div class="container col-sm-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="form-group center" ng-if="permissao_user.includes('VISUALIZAR')">
+                    <div class="container col-sm-12">
+                        <form id="formPesquisa" name="formPesquisa">
+                            <div class="col-sm-8">
+                                <input class="form-control round-form" type="text" name="pesquisaDados"
+                                    ng-pattern="/^[A-Za-zÀ-ü0-9 .,-]+$/" ng-model="pesquisa.input"
+                                    placeholder="Nome do Imóvel/Autuado; Nº Processo; CPF/CNPJ">
+                            </div>
+                            <button class="btn btn-success" ng-disabled="formPesquisa.$invalid"
+                                ng-click="vm.pesquisar_autuacao(pesquisa)">Pesquisar</button>
+                            <button class="btn btn-success" ng-click="pesquisa=null">Limpar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div ng-if="permissao_user.includes('VISUALIZAR')">
+                    <div class="col-sm-12">
+                        <table class="table table-striped table-bordered table-responsive">
+                            <tr>
+                                <th class="text-center text-title-table col-sm-1">Nome do Imóvel</th>
+                                <th class="text-center text-title-table col-sm-1">Nome do Autuado</th>
+                                <th class="text-center text-title-table col-sm-1">Nº Processo</th>
+                                <th class="text-center text-title-table col-sm-1">CPF/CNPJ</th>                                
+                                <th class="text-center text-title-table col-sm-1">Série Auto de Infração</th>
+                                <th class="text-center text-title-table col-sm-2">Localização do Imóvel</th>
+                                <th class="text-center text-title-table col-sm-1">Município</th>
+                                <th class="text-center text-title-table col-sm-1">Zona</th>
+
+                                <th class="text-center text-title-table col-sm-1">Ações</th>
+                            </tr>
+
+                            <tr ng-repeat="und in vm.autuacoes">
+
+                                <td class="text-center text-table col-sm-1">
+                                    {{und.nome_imovel | limitTo: 40 }}
+                                </td>
+
+                                <td class="text-center text-table col-sm-1">
+                                    {{und.nome_autuado | limitTo: 40 }}
+                                </td>
+                                <td class="text-center text-table col-sm-1">
+                                    {{und.n_processo}}
+                                </td>
+                                <td class="text-center text-table col-sm-1">
+                                    {{und.cpf}}
+                                </td>
+                                <td class="text-center text-table col-sm-1">
+                                    {{und.serie_auto_infracao | limitTo: 40 }}
+                                </td>
+                                <td class="text-center text-table col-sm-2">
+                                    {{und.localizacao_imovel | limitTo: 50}}
+                                </td>
+                                <td class="text-center text-table col-sm-1">
+                                    {{und.descricao_municipio}}
+                                </td>
+                                <td class="text-center text-table col-sm-1">
+                                    {{und.zona}}
+                                </td>
+                                <td class="row text-center text-table col-sm-1">
+                                    <!-- Single button -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-succes dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Selecionar Ações <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a ng-if="permissao_user.includes('INSERIR')" href=""
+                                                    ng-click="vm.editar_autuacao(und)"><i
+                                                        class="fa fa-pencil fa-2x"></i>
+                                                    Editar
+                                                    Autuação</a>
+                                                <a ng-if="!(permissao_user.includes('INSERIR'))" href=""><i
+                                                        class="fa fa-pencil fa-2x"></i> Sem permissão para CADASTRO</a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a ng-if="permissao_user.includes('DELETAR')" href=""
+                                                    ng-click="vm.deletar_autuacao(und.cod_autuacao)"><i
+                                                        class="fa fa-trash fa-2x"></i>
+                                                    Deletar Autuação</a>
+                                                <a ng-if="!(permissao_user.includes('DELETAR'))" href=""><i
+                                                        class="fa fa-pencil fa-2x"></i> Sem permissão para DELETAR</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div ng-include="'app/Autuacao/views/modals/editar_autuacao.html'"></div>

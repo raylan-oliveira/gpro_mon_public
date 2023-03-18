@@ -1,0 +1,310 @@
+
+<div class="col-sm-12 text-center">
+    <h3 class="title-pagina">Cadastro de Autuação</h3>
+
+    <h3 class="" ng-if="!(permissao_user.includes('INSERIR'))">Sem Permissão para Cadastro</h3>
+</div>
+
+<!-- DIV CADASTRO -->
+
+
+<div class="container col-sm-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <form id="formCadastrarAtuacao" name="formCadastrarAtuacao" class="form-group">
+                <label><i class="icone_obrigatorio">*</i>Campos obrigatórios</label>
+                <div class="col-sm-12">
+
+                    <div class="col-sm-2">
+
+                        <i class="icone_obrigatorio">*</i><label for="n_processo"> Nº do Processo:</label><i
+                            class="icone_formulario_correto" ng-show="autuacao.n_processo" class="fa fa-check"
+                            aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" placeholder="Ex. 402201345300689/2021-11"
+                            id="n_processo" name="n_processo" ng-pattern="/^[0-9\/-]+$/" ng-model="autuacao.n_processo">
+                    </div>
+                    <div class="col-sm-1">
+                        <label for="id_alerta"> ID Alerta:</label><i class="icone_formulario_correto"
+                            ng-show="autuacao.id_alerta" class="" aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" placeholder="" id="id_alerta"
+                            name="id_alerta" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/" ng-model="autuacao.id_alerta">
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="cod_infracao">Sanção Aplicada:</label><i class="icone_formulario_correto"
+                            ng-show="autuacao.cod_infracao" class="" aria-hidden="true">✔</i>
+                        <select id="cod_infracao" class="form-control round-form" ng-model="autuacao.cod_infracao"
+                            name="cod_infracao">
+                            <option value="">Selecione uma sanção</option>
+                            <option ng-repeat="und in infracoes" value="{{und.cod_infracao}}"
+                                ng-selected="autuacao.cod_infracao==und.cod_infracao.toString()">
+                                {{und.descricao_infracao}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <i class="icone_obrigatorio">*</i><label for="n_auto_infracao"> Nº Auto de Infração:</label><i
+                            class="icone_formulario_correto" ng-show="autuacao.n_auto_infracao" class=""
+                            aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" placeholder="Ex. 2982" id="n_auto_infracao"
+                            name="n_auto_infracao" ng-pattern="/^[0-9]+$/" ng-model="autuacao.n_auto_infracao">
+                    </div>
+                    <div class="col-sm-2">
+                        <i class="icone_obrigatorio">*</i><label for="serie_auto_infracao"> Série Auto de
+                            Infração:</label><i class="icone_formulario_correto" ng-show="autuacao.serie_auto_infracao"
+                            class="" aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" placeholder="Ex. C" id="serie_auto_infracao"
+                            name="serie_auto_infracao" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"
+                            ng-model="autuacao.serie_auto_infracao">
+                    </div>
+
+
+                    <div class="col-sm-1">
+                        <label for="data_embargo"> Data Embargo:</label><i class="icone_formulario_correto" ng-show="autuacao.data_embargo"
+                            class="" aria-hidden="true">✔</i>
+                        <input type="date" class="form-control round-form" id="data_embargo"
+                            ng-model="autuacao.data_embargo" name="data_embargo">
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="col-sm-2">
+                        <label for="termo_compromisso"> Termo de compromisso:</label><i class="icone_formulario_correto"
+                            ng-show="autuacao.termo_compromisso" class="" aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" id="termo_compromisso"
+                            placeholder="Ex. 014/2020" ng-model="autuacao.termo_compromisso" name="termo_compromisso"
+                            ng-pattern="/^[0-9\/-]+$/">
+                    </div>
+
+                    <div class="col-sm-8">
+                        <label for="descricao_sancao_aplicada"> Descrição da Sanção Aplicada:</label><i
+                            class="icone_formulario_correto" ng-show="autuacao.descricao_sancao_aplicada" class=""
+                            aria-hidden="true">✔</i>
+                        <textarea type="text" class="form-control round-form" id="descricao_sancao_aplicada"
+                            placeholder="Ex. ART 51 RESERVA LEGAL OPERACAO FOCUS II"
+                            ng-model="autuacao.descricao_sancao_aplicada" name="descricao_sancao_aplicada"
+                            ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-3">
+                        <label for="nome_imovel"> Nome do Imóvel:</label><i class="icone_formulario_correto"
+                            ng-show="autuacao.nome_imovel" class="" aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" placeholder="Ex. Antonio José"
+                            id="nome_imovel" name="nome_imovel" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"
+                            ng-model="autuacao.nome_imovel">
+                    </div>
+                    <div class="col-sm-3">
+                        <i class="icone_obrigatorio">*</i><label for="localizacao_imovel"> Localização do
+                            Imóvel:</label><i class="icone_formulario_correto" ng-show="autuacao.localizacao_imovel"
+                            class="" aria-hidden="true">✔</i>
+                        <textarea type="text" class="form-control round-form"
+                            placeholder="Ex. BR 317 KM 132 SENTIDO XAPURI" id="localizacao_imovel"
+                            name="localizacao_imovel" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"
+                            ng-model="autuacao.localizacao_imovel"></textarea>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="municipio">Município do Imóvel:</label><i class="icone_formulario_correto"
+                            ng-show="autuacao.cod_municipio" class="" aria-hidden="true">✔</i>
+                        <select id="municipio" class="form-control round-form" ng-model="autuacao.cod_municipio"
+                            name="municipioProdutor">
+                            <option value="">Selecione um município</option>
+                            <option ng-repeat="und in municipios" value="{{und.cod_municipio}}"
+                                ng-selected="autuacao.cod_municipio==und.cod_municipio.toString()">
+                                {{und.descricao_municipio}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="area_imovel"> Área Imóvel (ha):</label><i class="icone_formulario_correto"
+                            ng-show="autuacao.area_imovel" class="" aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" id="area_imovel" placeholder="Ex. 3565,640"
+                            ng-model="autuacao.area_imovel" name="area_imovel" ng-pattern="/^[0-9,.]+$/">
+                    </div>
+
+                </div>
+                <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <i class="icone_obrigatorio">*</i><label for="nome_autuado"> Nome do Autuado:</label><i
+                        class="icone_formulario_correto" ng-show="autuacao.nome_autuado" class=""
+                        aria-hidden="true">✔</i>
+                    <input type="text" class="form-control round-form" placeholder="Ex. Antonio José" id="nome_autuado"
+                        name="nome_autuado" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"
+                        ng-model="autuacao.nome_autuado">
+                </div>
+                <div class="col-sm-4">
+                    <div class="col-sm-2 form-group">
+                        <label for="tipo_identificacao">CPF/CNPJ:</label>
+                        <!-- <i class="icone_formulario_correto" ng-show="autuacao.cpf" class="" aria-hidden="true">✔</i> -->
+                        <div class="col-sm-5">
+                            <label for="tipo_doc_cpf">CPF</label>
+                            <input type="radio" name="tipo_doc" id="tipo_doc_cpf" ng-model="tipo_doc" value="cpf">
+                        </div>
+                        <div class="col-sm-5">
+                            <label for="tipo_doc_cnpj">CNPJ</label>
+                            <input type="radio" name="tipo_doc" id="tipo_doc_cnpj" ng-model="tipo_doc" value="cnpj">
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control round-form maskCpf" placeholder="Ex. 999.999.999-99"
+                            id="cpf" ng-model="autuacao.cpf" name="cpfProdutor" ng-show="tipo_doc=='cpf'">
+                        <input type="text" class="form-control round-form maskCnpj" placeholder="Ex. 99.999.999/9999-99"
+                            id="cnpj" ng-model="autuacao.cpf" name="cnpjProdutor" ng-show="tipo_doc=='cnpj'">
+                    </div>
+
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="col-sm-2">
+                        <i class="icone_obrigatorio">*</i><label for="zona"> Zona:</label><i
+                            class="icone_formulario_correto" ng-show="autuacao.zona" class="" aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" id="zona" placeholder="Ex. 19L"
+                            ng-model="autuacao.zona" name="zona" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/">
+                    </div>
+                    <div class="col-sm-5">
+                        <label for="monitoramento_embargo"> Monitoramento do Embargo:</label><i
+                            class="icone_formulario_correto" ng-show="autuacao.monitoramento_embargo" class=""
+                            aria-hidden="true">✔</i>
+                        <input type="text" class="form-control round-form" placeholder="" id="monitoramento_embargo"
+                            name="monitoramento_embargo" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"
+                            ng-model="autuacao.monitoramento_embargo">
+                    </div>
+                </div>
+            </div>
+            </form>
+
+
+
+            <div class="col-sm-12 espaco_topo">
+
+                <div class="col-sm-7">
+                    <div class="col-sm-12">
+                        <i class="icone_obrigatorio">*</i><label>Coordenadas Planas (UTM)</label>
+                    </div>
+                    <form id="coordenadasForm" name="coordenadasForm" >
+                        <div class="col-sm-2">
+                            <label for="cood_x"> Coordenada X:</label><i class="icone_formulario_correto"
+                                ng-show="cood_x" class="" aria-hidden="true">✔</i>
+                            <input type="text" class="form-control round-form maskCoodX" id="coordenadas"
+                                placeholder="Ex. 45686,12" ng-model="cood_x" name="cood_x" ng-pattern="/^[0-9,.]+$/">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="cood_y"> Coordenada Y:</label><i class="icone_formulario_correto"
+                                ng-show="cood_y" class="" aria-hidden="true">✔</i>
+                            <input type="text" class="form-control round-form maskCoodY" id="cood_y"
+                                placeholder="Ex. 456865,12" ng-model="cood_y" name="cood_y" ng-pattern="/^[0-9,.]+$/">
+                        </div>
+                        <div class="col-sm-8">
+                            <label for="descricao_coord"> Descrição da Coordenada:</label><i
+                                class="icone_formulario_correto" ng-show="descricao_coord" class=""
+                                aria-hidden="true">✔</i>
+                                <textarea type="text" class="form-control round-form" id="descricao_coord" placeholder=""
+                                ng-model="descricao_coord" name="descricao_coord"
+                                ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/"></textarea>
+                        </div>
+                    </form>
+
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-success round-form" ng-disabled="coordenadasForm.$invalid"
+                            ng-click="vm.addCoordenadas(cood_x,cood_y,descricao_coord); cood_x=''; cood_y=''; descricao_coord=''">Adicionar
+                            Coordenadas</button>
+                    </div>
+                    <div class="col-sm-12">
+                    <div class="col-sm-5">
+                        <table class="table table-striped table-bordered table-responsive"
+                            ng-show="vm.arrayCorrdenada.length>0">
+                            <tr>
+                                <th class="text-center col-sm-3">Coordenada X</th>
+                                <th class="text-center col-sm-3">Coordenada Y</th>
+                                <th class="text-center col-sm-3">Descrição Coodenada</th>
+                                <th class="text-center col-sm-2">Deletar</th>
+                            </tr>
+                            <tr ng-repeat="und in vm.arrayCorrdenada">
+                                <td class="col-sm-2">
+                                    {{und.cood_x}}
+                                </td>
+                                <td class="col-sm-2">
+                                    {{und.cood_y}}
+                                </td>
+                                <td class="col-sm-2">
+                                    {{und.descricao_coord}}
+                                </td>
+                                <td class="col-sm-2 text-center">
+                                    <button type="submit" class="btn btn-success"
+                                        ng-click="vm.deletarCood(und.id_cood)">X</button>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="col-sm-12">
+                    <div class="col-sm-12">
+                        <label></label>
+                    </div>
+                    <form id="FiscalForm" name="FiscalForm">
+                        <div class="col-sm-7">
+                            <label for="fiscal">Nome do Fiscal</label><i class="icone_formulario_correto"
+                                ng-show="fiscal" class="" aria-hidden="true">✔</i>
+                            <input type="text" class="form-control round-form" id="fiscal" placeholder=""
+                                ng-model="fiscal" name="fiscal" ng-pattern="/^[A-Za-zÀ-ü 0-9.(),-_;?:!]+$/">
+                        </div>
+                    </form>
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-success round-form" ng-disabled="FiscalForm.$invalid"
+                            ng-click="vm.addFiscal(fiscal); fiscal=''">Adicionar Fiscal</button>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <table class="table table-striped table-bordered table-responsive"
+                            ng-show="vm.arrayFiscal.length>0">
+                            <tr>
+                                <th class="text-center col-sm-2">Fiscais</th>
+                                <th class="text-center col-sm-2">Deletar</th>
+                            </tr>
+                            <tr ng-repeat="und in vm.arrayFiscal">
+                                <td class="col-sm-5">
+                                    {{und.fiscal}}
+                                </td>
+                                <td class="col-sm-2 text-center">
+                                    <button type="submit" class="btn btn-success"
+                                        ng-click="vm.deletarFiscal(und.id_fiscal)">X</button>
+
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+            <!-- DIV CADASTRO -->
+            <div class="col-sm-12 espaco_topo" ng-if="permissao_user.includes('INSERIR')">
+                <div class="col-sm-12 text-center">
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-success round-form"
+                            onclick="window.location.href='#!principal'">Cancelar
+                            Cadastro</button>
+                        <button type="submit" class="btn btn-success round-form"
+                            ng-click="autuacao={};cood_x='';cood_y='';descricao_coord='';fiscal=''">Limpar
+                            Formulário</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-success round-form"
+                            ng-click="vm.cadastrar_autuacao(autuacao)">Gravar</button>
+                        <!-- <button class="btn btn-success round-form" ng-disabled="autuacao.cpf.$invalid" ng-click="vm.cadastrar_processo(processo); processo={}" >Gravar</button> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/app/app.mask.js"></script>

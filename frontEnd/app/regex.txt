@@ -1,0 +1,22 @@
+<i ng-show="visible" class="fa fa-check" aria-hidden="true"></i>
+ng-pattern="/^[A-Za-zÀ-ü .,-]+$/" # texto, nomes
+ng-pattern="/^[A-Za-zÀ-ü 0-9.,-]+$/" # endereço com numero e ponto
+ng-pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" # CPF
+ng-pattern="/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/" # CNPJ
+ng-pattern="/(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/" # CPF & CNPJ
+ng-pattern="/^\(\d{2}\) \d{4} \- \d{4}$/" # telefone
+ng-pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d{2}" # data
+ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" # email
+ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{5,}$/" # senha, minimo 5 caractere
+ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#]){5,}$/" # senha, minimo 5 caractere
+/^
+  (?=.*\d)              // deve conter ao menos um dígito
+  (?=.*[a-z])           // deve conter ao menos uma letra minúscula
+  (?=.*[A-Z])           // deve conter ao menos uma letra maiúscula
+  (?=.*[$*&@#])         // deve conter ao menos um caractere especial
+  [0-9a-zA-Z$*&@#]{5,}  // deve conter ao menos 5 dos caracteres mencionados
+$/
+
+
+ng-pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d{2}" # data
+dia pode ter valores entre 01 e 31, meses podem ser de 01 a 12, e anos de 1900 a 2099

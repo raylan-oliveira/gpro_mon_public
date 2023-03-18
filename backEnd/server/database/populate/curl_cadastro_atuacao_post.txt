@@ -1,0 +1,19 @@
+curl 'http://localhost:5001/api/cadastro' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: pt-BR,pt;q=0.9' \
+  -H 'Authorization: WyIxIiwiJDUkcm91bmRzPTUzNTAwMCR3Ym9LQTJJcEVwaGdJRXREJGR5cDIzdXJyV2p6M0djbmxkaTdiVGtLb3IyUHBFWjVlYzJEZU5oeVVXVTIiXQ.FuI1mg.5PyzoviHZK-NBfbhGafN1rbXGr4' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  -H 'Origin: http://localhost:2222' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: http://localhost:2222/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"n_processo":"213123","id_alerta":"123123","monitoramento_embargo":"123123","n_auto_infracao":"123123","serie_auto_infracao":"123123","ano":"123123","termo_compromisso":"12312312","descricao_sancao_aplicada":"312sadf sdfa sadf","nome_imovel":"2123","localizacao_imovel":"123123123","cod_municipio":"1","area_imovel":"123123","nome_autuado":"123123","cpf":"506.506.506-50","zona":"2131","coordenadas":[{"cood_x":"123","cood_y":"12312","descricao_coord":"desc 1"},{"cood_x":"123123","cood_y":"12312","descricao_coord":"desc 2"}],"fiscal":[{"fiscal":"fisca 1"},{"fiscal":"fisca 2"}],"cod_usuario":1}' \
+  --compressed

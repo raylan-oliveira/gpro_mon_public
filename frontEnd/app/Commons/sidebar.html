@@ -1,0 +1,26 @@
+<header class="header color-sidebar" ng-controller="navController as vm">
+	<a class="logo" onclick="window.location.href='#!principal'"><b class="color_title_font_sidebar">{{nomeSistema}}</b></a>
+	<div class="nav pull-center top-menu">
+		<div class="btn-group" ng-if="permissao_user.includes('ADMIN')"><button type="button" class="btn btn-theme" ui-sref="admin.ativar_usuario"><i class="fa fa-cog"></i> ADMIN</button></div>
+		<div class="btn-group">
+			<div ng-show="loading">
+				<div class="text-center">
+					<div class="loader" style="margin-left:-250px; width: 15px; height: auto"></div>
+				</div>
+			</div>
+			<button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle-o"></i> {{vm.usuario.name}}</button>
+			<button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+				<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li class="dropdown-menu-style"><a ui-sref="usuario.editar_usuario">Editar Perfil</a></li>
+				<li class="divider"></li>
+				<li><a ng-click="vm.tema()">Alterar Tema</a></li>
+				<li class="divider"></li>
+				<li><a ng-click="vm.logout()">Sair</a></li>
+				
+			</ul>
+		</div>                           
+	</div>
+</header>

@@ -1,0 +1,56 @@
+<!-- Modal Cadastro de Autuacaos -->
+<div class="modal fade" id="modal_editar_permissao_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title corfont text-center" id="myModalLabel">Editar Permissão do Usuário</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-panel row">
+                    <div class="container col-sm-12">
+                        <!-- DIV CADASTRO -->
+
+                        <form id="formPermissoesUser" name="formPermissoesUser">
+                            <div class="container container-center">
+
+                                <div><label>{{vm.dados_permissao_user.name}}</label></div>
+                                <div><label>{{vm.dados_permissao_user.email}}</label></div>
+                                <br>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4">
+                                        <label for="cod_permissao_user">Permissão:</label><i class="icone_formulario_correto"
+                                            ng-show="vm.dados_permissao_user.cod_permissao_user" class="" aria-hidden="true">✔</i>
+                                        <select id="cod_permissao_user" class="form-control round-form"
+                                            ng-model="vm.dados_permissao_user.cod_permissao_user" name="cod_permissao_user" required>
+                                            <option value="">Selecione uma Permissão</option>
+                                            <option ng-repeat="und in permissoes_user_request" value="{{und.cod_permissao_user}}"
+                                                ng-selected="vm.dados_permissao_user.cod_permissao_user==und.cod_permissao_user.toString()">
+                                                {{und.atributos_permissao_user}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                        </form>
+
+                        <!-- DIV CADASTRO -->
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer col-sm-12">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-success btn-block round-form pull-left"
+                        data-dismiss="modal">Fechar</button>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-success btn-block round-form" ng-disabled="formPermissoesUser.$invalid"
+                        ng-click="vm.atualizar_permissao_user(vm.dados_permissao_user)">Gravar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/app/app.mask.js"></script>

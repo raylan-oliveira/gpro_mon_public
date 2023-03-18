@@ -1,0 +1,36 @@
+<section id="container">
+    <div ng-include="'app/Commons/sidebar.html'"></div>
+    <section>
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-sm-12 main-chart">
+                    <div class="row mtbox">1
+                        <div class="container col-sm-12">
+                            <div class="col-sm-4" id="tela_cadastrar">
+                                <button ui-sref="autuacao.cadastrar_autuacao" class="btn btn-modal btn-lg col-sm-12">
+                                    <h4><i class="fa fa-id-card-o fa-2x"></i></h4>
+                                    Cadastro de Autuação
+                                </button>
+                            </div>
+                            <div class="col-sm-4" id="tela_pesquisa">
+                                <button ui-sref="autuacao.pesquisar_autuacao" class="btn btn-modal btn-lg col-sm-12">
+                                    <h4><i class="fa fa-search fa-2x"></i></h4>
+                                    Pesquisa de Autuação
+                                </button>
+                            </div>
+                            <div class="col-sm-4" id="tela_relatorio">
+                                <button ui-sref="relatorio.gerar_relatorio_autuacao"
+                                    class="btn btn-modal btn-lg col-sm-12">
+                                    <h4><i class="fa fa-file-text-o fa-2x"></i></h4>
+                                    Relatório de Autuação
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </section>
+</section>
+<div ng-include="'app/Commons/footer.html'"></div>

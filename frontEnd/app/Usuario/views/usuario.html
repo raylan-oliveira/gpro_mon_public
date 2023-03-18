@@ -1,0 +1,18 @@
+<section id="container">
+    <div ng-include="'/app/Commons/sidebar.html'"></div>
+    <section>
+        <div class="col-sm-12">
+            <div class="row mtbox">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div ui-view></div>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center">
+                        <button class="btn btn-success round-form" onclick="window.location.href='#!principal'">Voltar para Início </button>
+                    </div>
+            </div>
+        </div>
+    </section>
+</section>
+<div ng-include="'/app/Commons/footer.html'"></div>

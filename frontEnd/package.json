@@ -1,0 +1,32 @@
+{
+  "name": "new_front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.18",
+    "angular": "^1.6.9",
+    "exceljs": "^4.3.0",
+    "file-saver": "^2.0.5",
+    "ngstorage": "^0.3.11",
+    "oclazyload": "^1.1.0",
+    "sweetalert": "^2.1.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^15.0.4",
+    "axios": "^1.2.2",
+    "express": "^4.16.3",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify-es": "^3.0.0",
+    "ng-hot-reload-standalone": "^2.0.0",
+    "nodemon": "^2.0.20",
+    "pump": "^3.0.0"
+  }
+}

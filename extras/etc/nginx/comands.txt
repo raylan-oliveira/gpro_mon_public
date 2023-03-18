@@ -1,0 +1,15 @@
+systemctl enable nginx
+
+
+sudo /etc/init.d/nginxStart
+autoStart
+cd /etc/init.d
+
+sudo nano nginxStart
+
+#!/bin/bash
+# this script starts the nginx process attached to passenger
+sudo /usr/sbin/nginx
+
+sudo chmod +x  /etc/init.d/nginxStart
+sudo update-rc.d nginxStart defaults

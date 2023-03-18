@@ -1,0 +1,4 @@
+python3 manager.py runserver -p 5000
+
+# produção
+/usr/bin/python3 /home/suporte/.local/bin/gunicorn -w 4 -b 0.0.0.0:5000 manager:app --chdir /var/www/gpro/backEnd/ --daemon # restart sudo ps aux |grep gunicorn | awk '{ print $2 }' |xargs kill -HUP

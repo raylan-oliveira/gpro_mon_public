@@ -1,0 +1,100 @@
+<style>
+    .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+</style>
+
+<div class="container col-sm-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-sm-12 text-center">
+                <h3 class="title-pagina">Consultar Código de Ativação</h3>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group center">
+                    <div class="container col-sm-12">
+                        <form id="formPesquisa" name="formPesquisa">
+                            <div class="col-sm-8">
+                                <input class="form-control round-form" type="text" name="pesquisaDados"
+                                    ng-pattern="/^[A-Z0-9\-]{3,}$/" ng-model="pesquisa.input"
+                                    placeholder="Pesquise os códigos ativos">
+                            </div>
+                            <button type="button" class="btn btn-success" ng-disabled="formPesquisa.$invalid"
+                                ng-click="vm.pesquisa_cod_ativacao(pesquisa)">Pesquisar</button>
+                            <button type="button" class="btn btn-success" ng-click="pesquisa=null">Limpar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-sm-12">
+                        <table class="table table-striped table-bordered table-responsive">
+                            <tr>
+                                <th class="text-center text-title-table col-sm-1">Descrição</th>
+                                <th class="text-center text-title-table col-sm-1">Código</th>
+                                <th class="text-center text-title-table col-sm-1">Permissão</th>
+                                <th class="text-center text-title-table col-sm-1">Data</th>
+                                <th class="text-center text-title-table col-sm-1">Ações</th>
+                            </tr>
+
+                            <tr ng-repeat="und in vm.result_pesquisa_cod_ativacao">
+                               
+                                <td class="text-center col-sm-1">
+                                    {{und.descricao_usuario_config_ativacao | limitTo: 40 }}
+                                </td>
+
+                                <td class="text-center col-sm-1">
+                                    {{und.cod_ativacao | limitTo: 10 }}
+                                </td>
+                                <td class="text-center col-sm-1">
+                                    {{und.atributos_permissao_user}}
+                                </td>
+                                <td class="text-center col-sm-1">
+                                    {{und.data_criacao}}
+                                </td>
+
+
+                                <td class="row text-center col-sm-1">
+                                    <!-- Single button -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-succes dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Selecionar Ações <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a ng-if="permissao_user.includes('ADMIN')" href=""
+                                                    ng-click="vm.desativar_cod(und.cod_usuario_config_ativacao)"><i
+                                                        class="fa fa-check fa-2x"></i>
+                                                    Desativar Código</a>
+                                                <a ng-if="!(permissao_user.includes('ADMIN'))" href=""><i
+                                                        class=""></i> Sem permissão ADMINISTRADOR</a>
+                                            </li>
+                                            <!-- <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a ng-if="permissao_user.includes('ADMIN')" href=""
+                                                    ng-click="vm.editar_usuario_permissao(und)"><i
+                                                        class="fa fa-unlock fa-2x"></i>
+                                                        Alterar Permissão</a>
+                                                <a ng-if="!(permissao_user.includes('ADMIN'))" href=""><i
+                                                        class=""></i> Sem permissão ADMINISTRADOR</a>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'app/Admin/views/modals/editar_permissao_user.html'"></div>
