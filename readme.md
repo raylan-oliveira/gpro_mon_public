@@ -1,3 +1,6 @@
+## Sistema de Gerenciamento de Autuação
+Sistema de gerencimento de Autuação utilizando FLASK, AngularJS e com banco de dados em PostgreSQL. 
+
 ## Demo:
 ![Demon](https://raw.githubusercontent.com/raylan-oliveira/gpro_mon_public/main/gpro_mon.gif)
 
