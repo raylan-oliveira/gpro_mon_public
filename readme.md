@@ -1,5 +1,5 @@
 ## Sistema de Gerenciamento de Autuação
-Sistema de gerencimento de Autuação utilizando FLASK, AngularJS e com banco de dados em PostgreSQL. 
+Sistema de gerenciamento de Autuação utilizando FLASK, AngularJS e com banco de dados em PostgreSQL; com painel administrativo para ativar ou desativar usuário, e criação de código para quando o usuário fizer seu cadastro, possa ser ativado automaticamente quando utilizar um código válido em seu cadastro.
 
 ## Demo:
 ![Demon](https://raw.githubusercontent.com/raylan-oliveira/gpro_mon_public/main/gpro_mon.gif)
